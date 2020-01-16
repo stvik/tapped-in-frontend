@@ -11,7 +11,9 @@ class App extends React.Component {
   constructor() {
     super()
     this.state = {
-      allBreweries: []
+      allBreweries: [],
+      searchText: '',
+      searched: []
     }
   }
 
@@ -25,12 +27,32 @@ class App extends React.Component {
       )  
   }
 
+  updateSearchText = (e) => {
+    this.setState({
+      searchText: e.currentTarget.value
+    })
+    console.log(this.state.searchText)
+
+    this.searchBrew()
+  }
+
+  searchBrew = () => {
+    const lowerSearchT = this.state.searchText.toLowerCase()
+    const searchedBreweries = this.state.allBreweries.filter(brewery => (brewery.name.toLowerCase().includes(lowerSearchT) || brewery.street.toLowerCase().includes(lowerSearchT)))
+    
+  
+
+    this.setState({
+      searched: searchedBreweries
+    })
+  }
+
   render() {
    return( 
     <div>
       <Navbar />
-      <Homepage/>
-      <BreweriesListContainer breweries={this.state.allBreweries}/>
+      <Homepage searchText={this.state.searchText} updateSearchText={this.updateSearchText} searchBrew={this.searchBrew}/>
+      <BreweriesListContainer breweries={this.state.searchText ? this.state.searched : this.state.allBreweries}/>
     </div>
   ) }
 }
