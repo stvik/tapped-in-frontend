@@ -1,6 +1,7 @@
 import React from 'react';
 import Navbar from './components/Navbar'
 import BreweriesListContainer from './containers/BreweriesListContainer'
+import Homepage from './containers/Homepage'
 
 import './App.css';
 
@@ -28,6 +29,7 @@ class App extends React.Component {
    return( 
     <div>
       <Navbar />
+      <Homepage/>
       <BreweriesListContainer breweries={this.state.allBreweries}/>
     </div>
   ) }
