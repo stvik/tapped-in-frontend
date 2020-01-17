@@ -10,6 +10,7 @@ export default class SearchBar extends Component{
 		            		value={this.props.searchText}
 		            		placeholder='Search breweries...' />
 		        </Form.Field>
+		        <Button className="ui button primary" type='submit' onClick={this.props.searchBrew}>Search</Button>
 	        </Form>
             
         )

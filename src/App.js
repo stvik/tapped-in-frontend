@@ -1,7 +1,7 @@
 import React from 'react';
 import Navbar from './components/Navbar'
-import BreweriesListContainer from './containers/BreweriesListContainer'
 import Homepage from './containers/Homepage'
+import BrowseBreweryPage from './containers/BrowseBreweryPage'
 
 import './App.css';
 
@@ -18,7 +18,7 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    fetch('http://localhost:3000/breweries')
+    fetch('http://localhost:3000/breweries?state=district_of_columbia')
     .then(resp => resp.json())
     .then(data => 
       this.setState({
@@ -31,30 +31,53 @@ class App extends React.Component {
     this.setState({
       searchText: e.currentTarget.value
     })
-    console.log(this.state.searchText)
 
-    this.searchBrew()
   }
 
   searchBrew = () => {
     const lowerSearchT = this.state.searchText.toLowerCase()
-    const searchedBreweries = this.state.allBreweries.filter(brewery => (brewery.name.toLowerCase().includes(lowerSearchT) || brewery.street.toLowerCase().includes(lowerSearchT)))
+    fetch(`http://localhost:3000/breweries?name=${lowerSearchT}`)
+    .then(resp => resp.json())
+    .then(data => 
+      this.setState({
+        allBreweries: data
+      })
+      )  
+
+    // const searchedBreweries = this.state.allBreweries.filter(brewery => (brewery.name.toLowerCase().includes(lowerSearchT) || brewery.street.toLowerCase().includes(lowerSearchT)))
     
   
 
-    this.setState({
-      searched: searchedBreweries
-    })
+    // this.setState({
+    //   searched: searchedBreweries
+    // })
   }
+
+  pickState = (e) => {
+
+   const value =e.currentTarget.firstElementChild.innerText.toLowerCase()
+
+    fetch(`http://localhost:3000/breweries?state=${value}`)
+    .then(resp => resp.json())
+    .then(data => 
+      this.setState({
+        allBreweries: data
+      })
+      )  
+
+  }
+
 
   render() {
    return( 
     <div>
       <Navbar />
       <Homepage searchText={this.state.searchText} updateSearchText={this.updateSearchText} searchBrew={this.searchBrew}/>
-      <BreweriesListContainer breweries={this.state.searchText ? this.state.searched : this.state.allBreweries}/>
+      <BrowseBreweryPage breweries={this.state.allBreweries} pickState={this.pickState}/>
     </div>
   ) }
 }
 
 export default App;
+
+//this.state.searchText ? this.state.searched : 
