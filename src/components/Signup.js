@@ -15,17 +15,18 @@ class Signup extends Component{
                 </Header>
 
                 <Modal.Content>
-                    <Form style={{textAlign: 'center'}}>
-                        <Form.Input placeholder='Email'/>
-                        <Form.Input placeholder='Confirm Email'/>
-                        <Form.Input placeholder='Password'/>
-                        <Form.Input placeholder='Confirm Password'/>
-                        <Form.Input placeholder='What should we call you?' />
-                    
+                    <Form style={{textAlign: 'center'}} inverted onSubmit={this.props.createUser}>
+                        <Form.Input  name='firstname' label='First name' placeholder='First name'/>
+                        <Form.Input  name='lastname' label='Last name' placeholder='Last name'/>
+                        <Form.Input  name='username' label='Username' placeholder='Username'/>
+                        <Form.Input  name='password'label='Password' placeholder='Password'/>
+                        <h4>Tell us about yourself</h4>
+                        <Form.Input  name='bio' placeholder='Bio'/>
                         
                         <Button circular
                             color='green' inverted 
                             type='submit'
+                           
                         > 
                             <Icon name = 'checkmark' /> Sign Up
                         </Button>

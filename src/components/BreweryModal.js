@@ -11,6 +11,7 @@ class BreweryModal extends React.Component {
         
         // console.log(this.props)
         
+    
         return(
             <Modal 
                 open={this.props.modal}

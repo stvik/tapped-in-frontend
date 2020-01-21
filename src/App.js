@@ -4,9 +4,7 @@ import Homepage from './containers/Homepage'
 import BrowseBreweryPage from './containers/BrowseBreweryPage'
 import SimpleMap from './components/SimpleMap';
 import CommunityPage from './containers/CommunityPage'
-
-
-import { BrowserRouter as Router, Route}  from 'react-router-dom'
+import { BrowserRouter as Router, Route, Redirect}  from 'react-router-dom'
 
 
 import './App.css';
@@ -43,6 +41,7 @@ class App extends React.Component {
   }
 
   updateSearchText = (e) => {
+    console.log(e.currentTarget.value)
     this.setState({
       searchText: e.currentTarget.value
     })
@@ -51,21 +50,16 @@ class App extends React.Component {
 
   searchBrew = () => {
     const lowerSearchT = this.state.searchText.toLowerCase()
-    fetch(`http://localhost:3000/breweries?name=${lowerSearchT}&page=${this.state.page}`)
+    fetch(`http://localhost:3000/breweries?name=${lowerSearchT}&page=1`)
     .then(resp => resp.json())
-    .then(data => 
+    .then(data =>  {
       this.setState({
-        allBreweries: data
+        allBreweries: data,
+        page: 1
       })
-      )  
 
-    // const searchedBreweries = this.state.allBreweries.filter(brewery => (brewery.name.toLowerCase().includes(lowerSearchT) || brewery.street.toLowerCase().includes(lowerSearchT)))
-    
-  
-
-    // this.setState({
-    //   searched: searchedBreweries
-    // })
+    }
+      ) 
   }
 
   pickState = (e) => {
@@ -116,14 +110,44 @@ class App extends React.Component {
   }
   }
 
+  createUser = (e) => {
+    const userData = {
+      firstname: e.currentTarget.firstname.value,
+      lastname: e.currentTarget.lastname.value,
+      username: e.currentTarget.username.value,
+      bio: e.currentTarget.bio.value,
+      password: e.currentTarget.password.value
+    }
+
+    const configObj = {
+      method: "POST",
+      headers: {
+        'Content-Type': 'application/json',
+        Accept: 'application/json'
+      },
+      body: JSON.stringify(userData)
+      
+    }
+
+    fetch('http://localhost:3000/users', configObj)
+    .then(resp => resp.json())
+    .then(console.log)
+
+  }
+
+  handleLogin = (e) => {
+    console.log(e.currentTarget)
+  }
+
 
   render() {
     // console.log(this.state.allBreweries)
+  
    return( 
     <Router>
       <div>
-        <Navbar />
-        <Route exact path='/' component={() => <Homepage searchText={this.state.searchText} updateSearchText={this.updateSearchText} searchBrew={this.searchBrew}/>} />
+        <Navbar createUser={this.createUser} handleLogin={this.handleLogin}/>
+        <Route exact path='/' render={() => <Homepage searchText={this.state.searchText} updateSearchText={this.updateSearchText} searchBrew={this.searchBrew}/>} />
         <Route exact path='/breweries' render={() => <BrowseBreweryPage 
                                                       breweries={this.state.allBreweries}
                                                        pickState={this.pickState} 

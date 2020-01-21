@@ -15,6 +15,7 @@ export default class BreweriesListContainer extends React.Component {
 
 	render() {
 		// console.log(this.props.breweries.length)
+		
 		return (
 			<Segment style={{overflow: 'auto', maxHeight: 1000}}>
 			<Item.Group>

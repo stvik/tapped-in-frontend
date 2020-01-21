@@ -5,7 +5,7 @@ import UserCard from '../components/UserCard'
 export default class CommunityPage extends Component {
     render(){
         return (
-            <Segment>
+            <Segment style={{overflow: 'auto', maxHeight: 1000}}>
                 <Card.Group itemsPerRow={6}>
                     {this.props.users.map(user => <UserCard user={user}/> )}
                 </Card.Group>

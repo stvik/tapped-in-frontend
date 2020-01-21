@@ -7,6 +7,7 @@ import {Button, Grid} from 'semantic-ui-react'
 export default class BrowseBreweryPage extends React.Component {
 	render() {
 		// console.log(this.props)
+		
 		return (
 			<div>
 				<Grid>

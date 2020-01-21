@@ -1,18 +1,22 @@
 import React, {Component} from 'react'
 import {Form, Button} from 'semantic-ui-react'
+import { Link } from 'react-router-dom'
 
-export default class SearchBar extends Component{
-    render(){
+const SearchBar = (props) =>{
+   
+    	console.log(props)
         return (
             <Form> 
 	            <Form.Field>
-		            <input onChange={this.props.updateSearchText}
-		            		value={this.props.searchText}
+		            <input onChange={props.updateSearchText}
+		            		value={props.searchText}
 		            		placeholder='Search breweries...' />
 		        </Form.Field>
-		        <Button className="ui button primary" type='submit' onClick={this.props.searchBrew}>Search</Button>
+		        <Button as={Link} to='/breweries' className="ui button" type='submit' onClick={props.searchBrew}>Search</Button>
 	        </Form>
             
         )
-    }
+    
 }
+
+export default SearchBar

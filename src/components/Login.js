@@ -15,10 +15,10 @@ class Login extends Component {
                 </Header>
 
                 <Modal.Content>
-                    <Form style={{textAlign: 'center'}}>
-                        <Form.Input placeholder='Username'/>
+                    <Form style={{textAlign: 'center'}} inverted onSubmit={this.props.handleLogin}>
+                        <Form.Input name='username' label="Username" placeholder='Username'/>
                     
-                        <Form.Input placeholder='joe@flatironschool.com' />
+                        <Form.Input name='password' label="Password" placeholder='****' />
                             
                         
                         <Button circular
