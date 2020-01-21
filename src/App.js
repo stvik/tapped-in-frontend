@@ -2,6 +2,8 @@ import React from 'react';
 import Navbar from './components/Navbar'
 import BreweriesListContainer from './containers/BreweriesListContainer'
 import Homepage from './containers/Homepage'
+import SimpleMap from './components/SimpleMap';
+
 
 import './App.css';
 
@@ -30,6 +32,7 @@ class App extends React.Component {
     <div>
       <Navbar />
       <Homepage/>
+      <SimpleMap breweries={this.state.allBreweries} />
       <BreweriesListContainer breweries={this.state.allBreweries}/>
     </div>
   ) }
