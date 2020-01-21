@@ -18,7 +18,7 @@ class Login extends Component {
                     <Form style={{textAlign: 'center'}} inverted onSubmit={this.props.handleLogin}>
                         <Form.Input name='username' label="Username" placeholder='Username'/>
                     
-                        <Form.Input name='password' label="Password" placeholder='****' />
+                        <Form.Input name='password' label="Password" type='password' />
                             
                         
                         <Button circular

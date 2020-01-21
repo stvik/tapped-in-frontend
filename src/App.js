@@ -18,6 +18,7 @@ class App extends React.Component {
       searchText: '',
       page: 1,
       selectedState: 'virginia',
+      loggedInUser: null
 
     }
   }
@@ -128,7 +129,9 @@ class App extends React.Component {
   }
 
   handleLogin = (e) => {
-    console.log(e.currentTarget)
+      fetch(`http://localhost:3000/users/login?username=${e.currentTarget.username.value}&password=${e.currentTarget.password.value}`)
+      .then(resp => resp.json())
+      .then(data => this.setState({loggedInUser: data}))
   }
 
 
