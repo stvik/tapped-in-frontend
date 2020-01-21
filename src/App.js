@@ -13,12 +13,12 @@ class App extends React.Component {
     this.state = {
       allBreweries: [],
       searchText: '',
-      searched: []
+      page: 0,
     }
   }
 
   componentDidMount() {
-    fetch('http://localhost:3000/breweries?state=district_of_columbia')
+    fetch(`http://localhost:3000/breweries?state=virginia&page=${this.state.page}`)
     .then(resp => resp.json())
     .then(data => 
       this.setState({
@@ -36,7 +36,7 @@ class App extends React.Component {
 
   searchBrew = () => {
     const lowerSearchT = this.state.searchText.toLowerCase()
-    fetch(`http://localhost:3000/breweries?name=${lowerSearchT}`)
+    fetch(`http://localhost:3000/breweries?name=${lowerSearchT}&page=${this.state.page}`)
     .then(resp => resp.json())
     .then(data => 
       this.setState({
@@ -57,7 +57,7 @@ class App extends React.Component {
 
    const value =e.currentTarget.firstElementChild.innerText.toLowerCase()
 
-    fetch(`http://localhost:3000/breweries?state=${value}`)
+    fetch(`http://localhost:3000/breweries?state=${value}&page=${this.state.page}`)
     .then(resp => resp.json())
     .then(data => 
       this.setState({
