@@ -13,12 +13,14 @@ class App extends React.Component {
     this.state = {
       allBreweries: [],
       searchText: '',
-      page: 0,
+      page: 1,
+      selectedState: 'virginia',
+
     }
   }
 
   componentDidMount() {
-    fetch(`http://localhost:3000/breweries?state=virginia&page=${this.state.page}`)
+    fetch(`http://localhost:3000/breweries?state=${this.state.selectedState}&page=${this.state.page}`)
     .then(resp => resp.json())
     .then(data => 
       this.setState({
@@ -57,7 +59,20 @@ class App extends React.Component {
 
    const value =e.currentTarget.firstElementChild.innerText.toLowerCase()
 
-    fetch(`http://localhost:3000/breweries?state=${value}&page=${this.state.page}`)
+    fetch(`http://localhost:3000/breweries?state=${value}&page=1`)
+    .then(resp => resp.json())
+    .then(data => 
+      this.setState({
+        selectedState: value,
+        allBreweries: data,
+        page: 1
+      })
+      )  
+
+  }
+
+  getStateBrews = (page) => {
+    fetch(`http://localhost:3000/breweries?state=${this.state.selectedState}&page=${page}`)
     .then(resp => resp.json())
     .then(data => 
       this.setState({
@@ -67,13 +82,35 @@ class App extends React.Component {
 
   }
 
+  getMoreBrews = () => {
+    this.getStateBrews(this.state.page + 1)
+
+    this.setState({
+      page: this.state.page + 1,
+    })
+
+  }
+
+  getPreviousBrews = () => {
+    this.getStateBrews(this.state.page - 1)
+
+    this.setState({
+      page: this.state.page - 1,
+    })
+
+  }
+
 
   render() {
    return( 
     <div>
       <Navbar />
       <Homepage searchText={this.state.searchText} updateSearchText={this.updateSearchText} searchBrew={this.searchBrew}/>
-      <BrowseBreweryPage breweries={this.state.allBreweries} pickState={this.pickState}/>
+      <BrowseBreweryPage breweries={this.state.allBreweries}
+       pickState={this.pickState} 
+       getPreviousBrews={this.getPreviousBrews} 
+       getMoreBrews={this.getMoreBrews} 
+       page={this.state.page}/>
     </div>
   ) }
 }
