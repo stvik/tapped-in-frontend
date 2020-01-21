@@ -3,6 +3,9 @@ import Navbar from './components/Navbar'
 import Homepage from './containers/Homepage'
 import BrowseBreweryPage from './containers/BrowseBreweryPage'
 import SimpleMap from './components/SimpleMap';
+import CommunityPage from './containers/CommunityPage'
+
+
 import { BrowserRouter as Router, Route}  from 'react-router-dom'
 
 
@@ -18,11 +21,12 @@ class App extends React.Component {
       searchText: '',
       page: 1,
       selectedState: 'virginia',
+      users: []
 
     }
   }
 
-  componentWillMount() {
+  componentDidMount() {
     fetch(`http://localhost:3000/breweries?state=${this.state.selectedState}&page=${this.state.page}`)
     .then(resp => resp.json())
     .then(data => 
@@ -30,6 +34,12 @@ class App extends React.Component {
         allBreweries: data
       })
       )  
+  }
+
+  componentDidMount(){
+    fetch('http://localhost:3000/users')
+    .then(response => response.json())
+    .then(users => this.setState({users: users}))
   }
 
   updateSearchText = (e) => {
@@ -108,7 +118,7 @@ class App extends React.Component {
 
 
   render() {
-    console.log(this.state.allBreweries)
+    // console.log(this.state.allBreweries)
    return( 
     <Router>
       <div>
@@ -121,6 +131,8 @@ class App extends React.Component {
                                                        getMoreBrews={this.getMoreBrews} 
                                                        page={this.state.page} />} 
         />
+        <Route exact path='/community' render={() => <CommunityPage users = {this.state.users} />}/>
+
 
       </div>
     </Router>

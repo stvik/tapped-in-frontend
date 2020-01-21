@@ -17,7 +17,7 @@ class SimpleMap extends Component {
         lat: 37.3630212377705,
         lng: -77.407177
       },
-      zoom: 11,
+      zoom: 4,
       modal: false,
       activeMarker: {}
     }
@@ -32,30 +32,35 @@ class SimpleMap extends Component {
     )
   }
 
-  findCenter() {
-    if (this.props.breweries.length) {
-      const brew = this.props.breweries.find(element => element.latitude != 0)
 
-   
-      return  {
-        lat: brew.latitude,
-        lng: brew.longitude
-      }
-    }
-  }
+    // findCenter = () => {
+    //   console.log(this.props.breweries)
+    //   const lat = this.props.breweries[0].latitude
+    //   const lng = this.props.breweries[0].longitude
+      
+    //   this.setState(
+    //     {center: {
+    //       lat: lat,
+    //       lng: lng
+    //     }}
+    //   )
+      
+    //   }
+  
+  
 
 
   render(){
 
     console.log(this.props)
-    // const {center, zoom} = this.state
-    const center = this.findCenter()
-    const zoom = 11
+
+    const {center, zoom}  = this.state
+
     return (
         <div style={{ height: '100vh', width: '100%' }}>
         <GoogleMapReact
           bootstrapURLKeys={{ key: API_KEY }}
-          defaultCenter={center}
+          center={center}
           defaultZoom={zoom}
         >
           {this.props.breweries.map((brewery,index) => 

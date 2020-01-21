@@ -30,8 +30,11 @@ class Navbar extends React.Component {
           
           />
           <Menu.Item as={Link} to='/breweries'
-            name='Browse Breweries by State'
-          
+            name='Breweries'
+          />
+
+          <Menu.Item as={Link} to='/community'
+            name='Community'
           />
 
           <Menu.Menu position='right'>

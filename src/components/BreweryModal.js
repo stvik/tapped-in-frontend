@@ -9,7 +9,7 @@ class BreweryModal extends React.Component {
         
         const {name, image, street, city, state, description, website_url, postal_code} = this.props.brewery
         
-        console.log(this.props)
+        // console.log(this.props)
         
         return(
             <Modal 
