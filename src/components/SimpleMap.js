@@ -47,7 +47,6 @@ class SimpleMap extends Component {
 
   render(){
 
-    console.log(this.props)
     // const {center, zoom} = this.state
     const center = this.findCenter()
     const zoom = 11

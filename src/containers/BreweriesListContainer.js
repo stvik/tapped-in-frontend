@@ -14,7 +14,7 @@ export default class BreweriesListContainer extends React.Component {
 	// }
 
 	render() {
-		console.log(this.props.breweries.length)
+		
 		return (
 			<Item.Group>
 				{this.props.breweries.map((brewery,index) => <BreweryCard brewery={brewery} key={index}/>)}

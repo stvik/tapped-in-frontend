@@ -39,7 +39,8 @@ class Navbar extends React.Component {
 
             <Menu.Item name='Sign Up' onClick={this.openSignupModal} >
               
-                <Signup 
+                <Signup
+                  createUser={this.props.createUser} 
                   signupModalOpen = {this.state.signupModalOpen}
                   closeModal = {() => this.setState({signupModalOpen: !this.state.signupModalOpen})} 
                 /> Sign Up
@@ -47,7 +48,9 @@ class Navbar extends React.Component {
             </Menu.Item>
             
             <Menu.Item name='Login' onClick={this.openLoginModal}>
-                <Login loginModalOpen = {this.state.loginModalOpen}
+                <Login 
+                handleLogin={this.props.handleLogin}
+                loginModalOpen = {this.state.loginModalOpen}
                 closeModal = {() => this.setState({loginModalOpen: !this.state.loginModalOpen})} /> Login
         
             </Menu.Item>

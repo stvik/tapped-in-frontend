@@ -6,7 +6,7 @@ import {Button} from 'semantic-ui-react'
 
 export default class BrowseBreweryPage extends React.Component {
 	render() {
-		console.log(this.props)
+		
 		return (
 			<div>
 				<StateDropdown handleSelect={this.props.pickState}/>

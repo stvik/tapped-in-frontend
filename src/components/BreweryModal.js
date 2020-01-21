@@ -8,9 +8,7 @@ class BreweryModal extends React.Component {
     render(){
         
         const {name, image, street, city, state, description, website_url, postal_code} = this.props.brewery
-        
-        console.log(this.props)
-        
+    
         return(
             <Modal 
                 open={this.props.modal}
