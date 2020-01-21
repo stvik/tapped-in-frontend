@@ -83,21 +83,24 @@ class App extends React.Component {
   }
 
   getMoreBrews = () => {
+    if (this.state.allBreweries.length) {
     this.getStateBrews(this.state.page + 1)
 
     this.setState({
       page: this.state.page + 1,
     })
+  }
 
   }
 
   getPreviousBrews = () => {
+    if (this.state.page > 1) {
     this.getStateBrews(this.state.page - 1)
 
     this.setState({
       page: this.state.page - 1,
     })
-
+  }
   }
 
 
