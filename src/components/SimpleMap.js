@@ -5,14 +5,17 @@ import BreweryModal from './BreweryModal';
 
 const API_KEY = process.env.REACT_APP_GOOGLE_MAP_API_KEY
 
+
+
 class SimpleMap extends Component {
+
 
   constructor(){
     super()
     this.state = {
       center: {
-        lat: 38.8716537346939,
-        lng: -77.0065830204082
+        lat: 37.3630212377705,
+        lng: -77.407177
       },
       zoom: 11,
       modal: false,
@@ -29,9 +32,25 @@ class SimpleMap extends Component {
     )
   }
 
+  findCenter() {
+    if (this.props.breweries.length) {
+      const brew = this.props.breweries.find(element => element.latitude != 0)
+
+   
+      return  {
+        lat: brew.latitude,
+        lng: brew.longitude
+      }
+    }
+  }
+
 
   render(){
-    const {center, zoom} = this.state
+
+    console.log(this.props)
+    // const {center, zoom} = this.state
+    const center = this.findCenter()
+    const zoom = 11
     return (
         <div style={{ height: '100vh', width: '100%' }}>
         <GoogleMapReact

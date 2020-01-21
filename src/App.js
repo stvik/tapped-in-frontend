@@ -3,6 +3,7 @@ import Navbar from './components/Navbar'
 import Homepage from './containers/Homepage'
 import BrowseBreweryPage from './containers/BrowseBreweryPage'
 import SimpleMap from './components/SimpleMap';
+import { BrowserRouter as Router, Route}  from 'react-router-dom'
 
 
 import './App.css';
@@ -21,7 +22,7 @@ class App extends React.Component {
     }
   }
 
-  componentDidMount() {
+  componentWillMount() {
     fetch(`http://localhost:3000/breweries?state=${this.state.selectedState}&page=${this.state.page}`)
     .then(resp => resp.json())
     .then(data => 
@@ -107,8 +108,30 @@ class App extends React.Component {
 
 
   render() {
+    console.log(this.state.allBreweries)
    return( 
-    <div>
+    <Router>
+      <div>
+        <Navbar />
+        <Route exact path='/' component={() => <Homepage searchText={this.state.searchText} updateSearchText={this.updateSearchText} searchBrew={this.searchBrew}/>} />
+        <Route exact path='/breweries' render={() => <BrowseBreweryPage 
+                                                      breweries={this.state.allBreweries}
+                                                       pickState={this.pickState} 
+                                                       getPreviousBrews={this.getPreviousBrews} 
+                                                       getMoreBrews={this.getMoreBrews} 
+                                                       page={this.state.page} />} 
+        />
+
+      </div>
+    </Router>
+
+
+  ) }
+}
+
+export default App;
+
+ { /*   <div>
       <Navbar />
       <Homepage searchText={this.state.searchText} updateSearchText={this.updateSearchText} searchBrew={this.searchBrew}/>
       
@@ -120,10 +143,4 @@ class App extends React.Component {
       
       <SimpleMap breweries={this.state.allBreweries} />
       
-    </div>
-  ) }
-}
-
-export default App;
-
-//this.state.searchText ? this.state.searched : 
+    </div> */ }

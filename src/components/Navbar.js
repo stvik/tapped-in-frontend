@@ -2,6 +2,7 @@ import React from 'react'
 import {Button, Menu} from 'semantic-ui-react'
 import  Login from './Login'
 import Signup from './Signup'
+import { Link } from 'react-router-dom'
 
 class Navbar extends React.Component {
 
@@ -24,11 +25,13 @@ class Navbar extends React.Component {
   render() {
     return (
       <Menu size='large' secondary>
-          <Menu.Item
+          <Menu.Item as={Link} to='/'
             name='Home'   
+          
           />
-          <Menu.Item
-            name='Breweries'
+          <Menu.Item as={Link} to='/breweries'
+            name='Browse Breweries by State'
+          
           />
 
           <Menu.Menu position='right'>
