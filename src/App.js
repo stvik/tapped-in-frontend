@@ -2,6 +2,8 @@ import React from 'react';
 import Navbar from './components/Navbar'
 import Homepage from './containers/Homepage'
 import BrowseBreweryPage from './containers/BrowseBreweryPage'
+import SimpleMap from './components/SimpleMap';
+
 
 import './App.css';
 
@@ -106,11 +108,15 @@ class App extends React.Component {
     <div>
       <Navbar />
       <Homepage searchText={this.state.searchText} updateSearchText={this.updateSearchText} searchBrew={this.searchBrew}/>
+      
       <BrowseBreweryPage breweries={this.state.allBreweries}
        pickState={this.pickState} 
        getPreviousBrews={this.getPreviousBrews} 
        getMoreBrews={this.getMoreBrews} 
        page={this.state.page}/>
+      
+      <SimpleMap breweries={this.state.allBreweries} />
+      
     </div>
   ) }
 }
