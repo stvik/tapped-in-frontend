@@ -16,11 +16,11 @@ class Signup extends Component{
 
                 <Modal.Content>
                     <Form style={{textAlign: 'center'}} inverted onSubmit={this.props.createUser}>
-                        <Form.Input  name='firstname' label='First name' placeholder='First name'/>
-                        <Form.Input  name='lastname' label='Last name' placeholder='Last name'/>
+                        <Form.Input  name='firstname' label='First Name' placeholder='First Name'/>
+                        <Form.Input  name='lastname' label='Last Name' placeholder='Last Name'/>
                         <Form.Input  name='username' label='Username' placeholder='Username'/>
                         <Form.Input  name='password'label='Password' placeholder='Password' type='password' />
-                        <h4>Tell us about yourself</h4>
+                        <h4>Tell us about yourself!</h4>
                         <Form.Input  name='bio' placeholder='Bio'/>
                         
                         <Button circular
