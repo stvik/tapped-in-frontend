@@ -17,9 +17,9 @@ export default class BreweriesListContainer extends React.Component {
 		// console.log(this.props.breweries.length)
 		
 		return (
-			<Segment style={{overflow: 'auto', maxHeight: 1000}}>
-			<Item.Group>
-				{this.props.breweries.map((brewery,index) => <BreweryCard brewery={brewery} key={index}/>)}
+			<Segment style={{overflow: 'auto', maxHeight: 900}}>
+			<Item.Group divided>
+				{this.props.breweries.map((brewery,index) => <BreweryCard selectedBrewery ={this.props.selectedBrewery} brewery={brewery} key={index}/>)}
 			</Item.Group>
 			</Segment>
 

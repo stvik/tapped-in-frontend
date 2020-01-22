@@ -32,12 +32,19 @@ class Navbar extends React.Component {
     return (
       <Menu size='large' secondary>
           <Menu.Item as={Link} to='/'
-            name='Home'
-            active={this.state.activeItem === 'Home'}
+            name='Main Home'
+            active={this.state.activeItem === 'Main Home'}
             onClick={this.handleItemClick}
           >
             <img src = "http://static.showit.co/800/KtnOrZ53RuOmaWr0IInTEg/73125/just_hop.png" />
           </Menu.Item>
+
+          <Menu.Item as={Link} to='/'
+            name='Home'
+            active={this.state.activeItem === 'Home'}
+            onClick={this.handleItemClick}
+            color='green'
+          />
         
           
           <Menu.Item as={Link} to='/breweries'

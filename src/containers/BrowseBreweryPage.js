@@ -9,12 +9,12 @@ export default class BrowseBreweryPage extends React.Component {
 	constructor(){
 		super()
 		this.state = {
-			color: 'red'
+			selectedBrewery: {}
 		}
 	}
 
-	changePinColor = () => {
-		
+	selectedBrewery = (brewery) => {
+		this.setState({selectedBrewery: brewery})
 	}
 
 	render() {
@@ -23,14 +23,14 @@ export default class BrowseBreweryPage extends React.Component {
 		return (
 			<div>
 				<Grid>
-					<Grid.Column width={8}>
+					<Grid.Column width={6}>
 						<StateDropdown handleSelect={this.props.pickState}/>
-						<Button onClick={this.props.getPreviousBrews}>Previous Page</Button>
-						<Button onClick={this.props.getMoreBrews}>Next Page</Button>
-						<BreweriesListContainer breweries={this.props.breweries} getMoreBrews={this.props.getMoreBrews} page={this.props.page}/>
+						<Button circular onClick={this.props.getPreviousBrews}>Previous Page</Button>
+						<Button circular onClick={this.props.getMoreBrews}>Next Page</Button>
+						<BreweriesListContainer selectedBrewery = {this.selectedBrewery} breweries={this.props.breweries} getMoreBrews={this.props.getMoreBrews} page={this.props.page}/>
 					</Grid.Column>
-					<Grid.Column width={8}>
-					<SimpleMap breweries={this.props.breweries} />
+					<Grid.Column width={10}>
+					<SimpleMap  selectedBrewery = {this.state.selectedBrewery} breweries={this.props.breweries} />
 					</Grid.Column>
 				</Grid>
 			</div>
