@@ -53,17 +53,24 @@ class Navbar extends React.Component {
             onClick={this.handleItemClick}
             color='green'
           />
-
+          {this.props.loggedInUser ? 
           <Menu.Item as={Link} to='/community'
             name='Community'
             active={this.state.activeItem === 'Community'}
             onClick={this.handleItemClick}
             color='green'
-          />
+          /> : null
+          }
 
           <Menu.Menu position='right'>
             
-            {this.props.loggedInUser ? <Menu.Item as={Link} to='/profile' name='Profile' ><img src='https://react.semantic-ui.com/logo.png' /></Menu.Item>
+            {this.props.loggedInUser ? 
+              <Fragment>
+                <Menu.Item name = 'Logout' onClick={this.props.handleLogout}> Logout </Menu.Item> 
+                
+                <Menu.Item as={Link} to='/profile' name='Profile' > <img src='https://elearning.informea.org/pluginfile.php/4174/course/section/247/male.png' /> </Menu.Item>
+              
+              </Fragment>
               :
               <Fragment>
               <Menu.Item name='Sign Up' onClick={this.openSignupModal} >

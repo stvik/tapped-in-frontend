@@ -19,7 +19,7 @@ export default class StateDropdown extends React.Component {
 		}))
 
 		return(
-			<Dropdown placeholder='State' search selection options={stateOptions} onChange={this.props.handleSelect}/>
+			<Dropdown placeholder='State' fluid search selection options={stateOptions} onChange={this.props.handleSelect}/>
 			)
 	}
 

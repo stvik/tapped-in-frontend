@@ -158,6 +158,10 @@ class App extends React.Component {
     .then(data => this.setState({loggedInUser: data}))
   }
 
+  handleLogout = () => {
+    this.setState({loggedInUser: null})
+  }
+
   addToFavorites = (brewery)  => {
 
 
@@ -213,7 +217,7 @@ class App extends React.Component {
    return( 
     <Router>
       <div >
-        <Navbar createUser={this.createUser} handleLogin={this.handleLogin} loggedInUser = {this.state.loggedInUser}/>
+        <Navbar createUser={this.createUser} handleLogin={this.handleLogin} handleLogout={this.handleLogout} loggedInUser = {this.state.loggedInUser}/>
         <Route exact path='/' render={() => <Homepage searchText={this.state.searchText} updateSearchText={this.updateSearchText} searchBrew={this.searchBrew} updateSearchType={this.updateSearchType}/>} />
         <Route exact path='/breweries' render={() => <BrowseBreweryPage 
                                                       breweries={this.state.allBreweries}

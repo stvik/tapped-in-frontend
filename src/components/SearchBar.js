@@ -13,19 +13,22 @@ const SearchBar = (props) =>{
 			
 			
 			<Form style={{textAlign: 'center'}}> 
-		
 
-				<Form.Field >
+				<Form.Group>
+				<Form.Field width={4}>
 		        	<Select compact options={options} defaultValue='name' onChange={props.updateSearchType}/>
 
-		        </Form.Field>
-		        <Form.Field>
+		        </Form.Field >
+		        <Form.Field width={12}>
 		            <input  icon='search' onChange={props.updateSearchText}
 		            		value={props.searchText}
 							placeholder='Search breweries...'
 							/>
 
 		        </Form.Field>
+
+				</Form.Group>
+
 		      
 		        <Button  circular color='green' inverted as={Link} to='/breweries' className="ui button" type='submit' onClick={props.searchBrew}>Search</Button>
 

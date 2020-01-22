@@ -2,7 +2,7 @@ import React from 'react'
 import StateDropdown from '../components/StateDropdown'
 import BreweriesListContainer from './BreweriesListContainer'
 import SimpleMap from '../components/SimpleMap'
-import {Button, Grid} from 'semantic-ui-react'
+import {Button, Grid, Icon} from 'semantic-ui-react'
 
 export default class BrowseBreweryPage extends React.Component {
 	
@@ -23,11 +23,28 @@ export default class BrowseBreweryPage extends React.Component {
 			<div>
 				<Grid>
 					<Grid.Column width={6}>
+						
 						<StateDropdown handleSelect={this.props.pickState}/>
+					
+						<Button basic color='green' circular onClick={this.props.getPreviousBrews}>
+							<Icon name='arrow left'/>
+							Previous
+						</Button>
 
-						<Button circular onClick={this.props.getPreviousBrews}>Previous Page</Button>
-						<Button circular onClick={this.props.getMoreBrews}>Next Page</Button>
-						<BreweriesListContainer selectedBrewery = {this.selectedBrewery} breweries={this.props.breweries} getMoreBrews={this.props.getMoreBrews} page={this.props.page} loggedInUser={this.props.loggedInUser} addToFavorites={this.props.addToFavorites}/>
+						<Button basic color='green' floated='right'circular onClick={this.props.getMoreBrews}>
+							Next
+							<Icon name='arrow right'/>
+						</Button>
+				
+						
+						<BreweriesListContainer 
+							selectedBrewery = {this.selectedBrewery} 
+							breweries={this.props.breweries} 
+							getMoreBrews={this.props.getMoreBrews} 
+							page={this.props.page} 
+							loggedInUser={this.props.loggedInUser} 
+							addToFavorites={this.props.addToFavorites}
+						/>
 
 					</Grid.Column>
 					<Grid.Column width={10}>
