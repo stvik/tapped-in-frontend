@@ -1,7 +1,7 @@
     import React, {Component} from 'react'
 import SearchBar from '../components/SearchBar'
 import GoogleMapReact from 'google-map-react'
-import {Grid, GridColumn} from 'semantic-ui-react'
+import {Grid, GridColumn, Header, Image} from 'semantic-ui-react'
 import hoppy from '../images/hoppy.png'
 
 export default class Homepage extends Component {

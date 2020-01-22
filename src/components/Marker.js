@@ -5,16 +5,16 @@ import '../Marker.css'
 
 const Marker = (props) => {
     const {name, brewery, setActiveMarker} = props
-    // console.log(props)
+    console.log(props)
     return (
         <div>
             <div    
                 className = 'pin bounce'
-                style={{backgroundColor: (props.selectedBrewery.id == props.brewery.id)? 'blue' : 'red', cursor: 'pointer'}}
+                style={{backgroundColor: (props.selectedBrewery.name == props.brewery.name)? 'blue' : 'red', cursor: 'pointer'}}
                 title={name}
                 onClick = {() => setActiveMarker(brewery)}
             />
-            {(props.selectedBrewery.id == props.brewery.id) ? <div className='pulse'/> : null}
+            {(props.selectedBrewery.name == props.brewery.name) ? <div className='pulse'/> : null}
         </div>
     )
 }
