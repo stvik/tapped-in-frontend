@@ -68,7 +68,7 @@ class Navbar extends React.Component {
               <Fragment>
                 <Menu.Item name = 'Logout' onClick={this.props.handleLogout}> Logout </Menu.Item> 
                 
-                <Menu.Item as={Link} to='/profile' name='Profile' > <img src='https://react.semantic-ui.com/logo.png' /> </Menu.Item>
+                <Menu.Item as={Link} to='/profile' name='Profile' > <img src='https://elearning.informea.org/pluginfile.php/4174/course/section/247/male.png' /> </Menu.Item>
               
               </Fragment>
               :
