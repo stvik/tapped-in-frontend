@@ -5,7 +5,7 @@ const BreweryCard = (props) => {
 
 	const {name, street, city, state, postal_code, website_url, rating, image, description} = props.brewery
 	return (
-	 <Item>
+	 <Item onClick={() => props.selectedBrewery(props.brewery)}>
       <Item.Image size='small' src={image} />
 
       <Item.Content>
@@ -13,12 +13,14 @@ const BreweryCard = (props) => {
         <Item.Meta>
           <span className='cinema'>{street}, {city}, {state} {postal_code}</span>
         </Item.Meta>
-        <Item.Description>{description}</Item.Description>
-        <Item.Extra>
-         
+        <Item.Extra>  
           {props.loggedInUser ? <Button basic color='green' floated='right' size='tiny' onClick={() => props.addToFavorites(props.brewery)}>  
              Add to Favorites  
           </Button> : null}
+          <Button circular size='mini' basic  color='blue' floated='center'>
+              Details
+              <Icon name='right chevron' />
+            </Button>
         </Item.Extra>
       </Item.Content>
     </Item>
@@ -27,3 +29,7 @@ const BreweryCard = (props) => {
 }
 
 export default BreweryCard
+          // <Button circular size='mini' basic color='red' floated='center'>
+          //     Favorite
+          //     <Icon name='right favorite' />
+          // </Button>

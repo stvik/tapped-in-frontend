@@ -14,8 +14,8 @@ class SimpleMap extends Component {
     super()
     this.state = {
       center: {
-        lat: 37.3630212377705,
-        lng: -77.407177
+        lat: 39.833333,
+        lng: -98.583333
       },
       zoom: 4,
       modal: false,
@@ -68,9 +68,9 @@ class SimpleMap extends Component {
                 lat={brewery.latitude}
                 lng={brewery.longitude}
                 text="My Marker"
-                color='red'
                 brewery = {brewery}
                 setActiveMarker = {this.setActiveMarker}
+                selectedBrewery={this.props.selectedBrewery}
                 />
                 )
               }

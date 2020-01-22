@@ -4,15 +4,16 @@ import {Grid, Image, Header} from 'semantic-ui-react'
 
 class Profile extends Component {
     render(){
+        const {firstname, lastname, image, bio} = this.props.user
         return(
             <Grid >
                 <Grid.Row>
                 <Grid.Column width={3} >
-                    <Image src='https://i0.wp.com/manateeymca.org/wp-content/uploads/2016/03/headshot.png?ssl=1' />
+                    <Image src={image} />
                 </Grid.Column>
                 <Grid.Column width={13}>
-                    <Header as='h1'>Jasur Abdullin</Header>
-                    <Header size='small'>This is my bio</Header>
+                    <Header as='h1'>{firstname} {lastname}</Header>
+                    <Header size='small'>{bio}</Header>
                 </Grid.Column>
                 </Grid.Row>
 
