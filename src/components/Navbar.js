@@ -1,5 +1,5 @@
 import React, { Fragment } from 'react'
-import {Button, Menu} from 'semantic-ui-react'
+import { Menu} from 'semantic-ui-react'
 import  Login from './Login'
 import Signup from './Signup'
 import { Link } from 'react-router-dom'

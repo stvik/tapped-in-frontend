@@ -10,11 +10,11 @@ const Marker = (props) => {
         <div>
             <div    
                 className = 'pin bounce'
-                style={{backgroundColor: (props.selectedBrewery.name == props.brewery.name)? 'blue' : 'red', cursor: 'pointer'}}
+                style={{backgroundColor: (props.selectedBrewery.name === props.brewery.name)? 'blue' : 'red', cursor: 'pointer'}}
                 title={name}
                 onClick = {() => setActiveMarker(brewery)}
             />
-            {(props.selectedBrewery.name == props.brewery.name) ? <div className='pulse'/> : null}
+            {(props.selectedBrewery.name === props.brewery.name) ? <div className='pulse'/> : null}
         </div>
     )
 }

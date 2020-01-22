@@ -1,5 +1,4 @@
 import React from 'react'
-import _ from 'lodash'
 import { Header, Image, Modal, Button, Popup } from 'semantic-ui-react'
 
 class BreweryModal extends React.Component {

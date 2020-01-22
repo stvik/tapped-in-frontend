@@ -22,7 +22,7 @@ export default class BrowseBreweryPage extends React.Component {
 		return (
 			<div>
 				<Grid>
-					<Grid.Column width={6}>
+					<Grid.Column width={6} >
 						
 						<StateDropdown handleSelect={this.props.pickState}/>
 					

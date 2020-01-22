@@ -2,7 +2,6 @@ import React from 'react';
 import Navbar from './components/Navbar'
 import Homepage from './containers/Homepage'
 import BrowseBreweryPage from './containers/BrowseBreweryPage'
-import SimpleMap from './components/SimpleMap';
 import CommunityPage from './containers/CommunityPage'
 import Profile from './components/Profile'
 import { BrowserRouter as Router, Route, Redirect}  from 'react-router-dom'
@@ -216,7 +215,7 @@ class App extends React.Component {
   
    return( 
     <Router>
-      <div >
+      <div>
         <Navbar createUser={this.createUser} handleLogin={this.handleLogin} handleLogout={this.handleLogout} loggedInUser = {this.state.loggedInUser}/>
         <Route exact path='/' render={() => <Homepage searchText={this.state.searchText} updateSearchText={this.updateSearchText} searchBrew={this.searchBrew} updateSearchType={this.updateSearchType}/>} />
         <Route exact path='/breweries' render={() => <BrowseBreweryPage 

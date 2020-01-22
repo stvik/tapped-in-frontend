@@ -1,4 +1,4 @@
-import React, {Component} from 'react'
+import React from 'react'
 import {Form, Button, Select} from 'semantic-ui-react'
 import { Link } from 'react-router-dom'
 
@@ -30,7 +30,7 @@ const SearchBar = (props) =>{
 				</Form.Group>
 
 		      
-		        <Button  circular color='green' inverted as={Link} to='/breweries' className="ui button" type='submit' onClick={props.searchBrew}>Search</Button>
+		        <Button  circular color='green' as={Link} to='/breweries' className="ui button" type='submit' onClick={props.searchBrew}>Search</Button>
 
 				
 	        </Form>

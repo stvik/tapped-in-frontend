@@ -3,7 +3,7 @@ import {Item, Button, Icon} from 'semantic-ui-react'
 
 const BreweryCard = (props) => {
 
-	const {name, street, city, state, postal_code, website_url, rating, image, description} = props.brewery
+	const {name, street, city, state, postal_code, image} = props.brewery
 	return (
 	 <Item onClick={() => props.selectedBrewery(props.brewery)}>
       <Item.Image size='small' src={image} />
