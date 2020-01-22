@@ -7,7 +7,7 @@ export default class CommunityPage extends Component {
         return (
             <Segment style={{overflow: 'auto', maxHeight: 1000}}>
                 <Card.Group itemsPerRow={6}>
-                    {this.props.users.map(user => <UserCard user={user}/> )}
+                    {this.props.users.map((user, i) => <UserCard key ={i} user={user}/> )}
                 </Card.Group>
             </Segment>
         )

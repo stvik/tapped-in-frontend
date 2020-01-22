@@ -3,6 +3,7 @@ import {Button, Menu} from 'semantic-ui-react'
 import  Login from './Login'
 import Signup from './Signup'
 import { Link } from 'react-router-dom'
+import hoppy from '../images/hoppy.png'
 
 class Navbar extends React.Component {
 
@@ -10,9 +11,13 @@ class Navbar extends React.Component {
     super()
     this.state = {
       loginModalOpen: false,
-      signupModalOpen: false
+      signupModalOpen: false,
+      activeItem: 'home'
     }
   }
+
+
+  handleItemClick = (e, { name }) => this.setState({ activeItem: name })
 
   openLoginModal = () => {
     this.setState({loginModalOpen: true})
@@ -26,21 +31,31 @@ class Navbar extends React.Component {
     return (
       <Menu size='large' secondary>
           <Menu.Item as={Link} to='/'
-            name='Home'   
+            name='Home'
+            active={this.state.activeItem === 'Home'}
+            onClick={this.handleItemClick}
+          >
+            <img src = "http://static.showit.co/800/KtnOrZ53RuOmaWr0IInTEg/73125/just_hop.png" />
+          </Menu.Item>
+        
           
-          />
           <Menu.Item as={Link} to='/breweries'
             name='Breweries'
+            active={this.state.activeItem === 'Breweries'}
+            onClick={this.handleItemClick}
+            color='green'
           />
 
           <Menu.Item as={Link} to='/community'
             name='Community'
+            active={this.state.activeItem === 'Community'}
+            onClick={this.handleItemClick}
+            color='green'
           />
 
           <Menu.Menu position='right'>
     
-            
-
+             
             <Menu.Item name='Sign Up' onClick={this.openSignupModal} >
               
                 <Signup
@@ -48,7 +63,7 @@ class Navbar extends React.Component {
                   signupModalOpen = {this.state.signupModalOpen}
                   closeModal = {() => this.setState({signupModalOpen: !this.state.signupModalOpen})} 
                 /> Sign Up
-             
+            
             </Menu.Item>
             
             <Menu.Item name='Login' onClick={this.openLoginModal}>
@@ -57,8 +72,12 @@ class Navbar extends React.Component {
                 loginModalOpen = {this.state.loginModalOpen}
                 closeModal = {() => this.setState({loginModalOpen: !this.state.loginModalOpen})} /> Login
         
-            </Menu.Item>
-          </Menu.Menu>
+            </Menu.Item> 
+          
+            <Menu.Item as={Link} to='/profile' name='Profile' ><img src='https://react.semantic-ui.com/logo.png' /></Menu.Item>
+
+          </Menu.Menu> 
+
         </Menu>
 
       )

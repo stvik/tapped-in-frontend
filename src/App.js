@@ -8,6 +8,7 @@ import Profile from './components/Profile'
 import { BrowserRouter as Router, Route, Redirect}  from 'react-router-dom'
 
 
+
 import './App.css';
 
 
@@ -125,7 +126,7 @@ class App extends React.Component {
       method: "POST",
       headers: {
         'Content-Type': 'application/json',
-        Accept: 'application/json'
+        'Accept' : 'application/json'
       },
       body: JSON.stringify(userData)
       
@@ -133,11 +134,13 @@ class App extends React.Component {
 
     fetch('http://localhost:3000/users', configObj)
     .then(resp => resp.json())
-    .then(console.log)
+    .then(newUser => this.setState({loggedInUser: newUser}))
+    // console.log(this.state.loggedInUser)
 
   }
 
   handleLogin = (e) => {
+    console.log(e.currentTarget.password.value)
       fetch(`http://localhost:3000/users/login?username=${e.currentTarget.username.value}&password=${e.currentTarget.password.value}`)
       .then(resp => resp.json())
       .then(data => this.setState({loggedInUser: data}))
@@ -147,9 +150,10 @@ class App extends React.Component {
   render() {
     // console.log(this.state.allBreweries)
   
+  
    return( 
     <Router>
-      <div>
+      <div >
         <Navbar createUser={this.createUser} handleLogin={this.handleLogin} loggedInUser = {this.state.loggedInUser}/>
         <Route exact path='/' render={() => <Homepage searchText={this.state.searchText} updateSearchText={this.updateSearchText} searchBrew={this.searchBrew}/>} />
         <Route exact path='/breweries' render={() => <BrowseBreweryPage 

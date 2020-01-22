@@ -6,13 +6,21 @@ const SearchBar = (props) =>{
    
     	console.log(props)
         return (
-            <Form> 
-	            <Form.Field>
-		            <input onChange={props.updateSearchText}
+			
+			
+			<Form style={{textAlign: 'center'}}> 
+		
+
+				<Form.Field >
+		            <input  icon='search' onChange={props.updateSearchText}
 		            		value={props.searchText}
-		            		placeholder='Search breweries...' />
+							placeholder='Search breweries...'
+							/>
+
 		        </Form.Field>
-		        <Button as={Link} to='/breweries' className="ui button" type='submit' onClick={props.searchBrew}>Search</Button>
+		        <Button  circular color='green' inverted as={Link} to='/breweries' className="ui button" type='submit' onClick={props.searchBrew}>Search</Button>
+
+				
 	        </Form>
             
         )
