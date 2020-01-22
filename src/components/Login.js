@@ -16,9 +16,10 @@ class Login extends Component {
 
                 <Modal.Content>
                     <Form style={{textAlign: 'center'}} inverted onSubmit={this.props.handleLogin}>
-                        <Form.Input name='username' label="Username" placeholder='Username'/>
-                    
-                        <Form.Input name='password' label="Password" type='password' />
+                        {this.props.error ? <Form.Input name='username' label="Username" placeholder='Username'  error /> : <Form.Input name='username' label="Username" placeholder='Username'  />}
+                        {this.props.error ? <Form.Input name='password' label="Password" type='password' error='Incorrect username or password' /> : <Form.Input name='password' label="Password" type='password' />}
+
+                        
                             
                         
                         <Button circular

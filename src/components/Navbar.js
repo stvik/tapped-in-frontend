@@ -66,7 +66,7 @@ class Navbar extends React.Component {
             
             {this.props.loggedInUser ? 
               <Fragment>
-                <Menu.Item name = 'Logout' onClick={this.props.handleLogout}> Logout </Menu.Item> 
+                <Menu.Item as={Link} to='/' name = 'Logout' onClick={this.props.handleLogout}> Logout </Menu.Item> 
                 
                 <Menu.Item as={Link} to='/profile' name='Profile' > <img src='https://elearning.informea.org/pluginfile.php/4174/course/section/247/male.png' /> </Menu.Item>
               
@@ -87,6 +87,7 @@ class Navbar extends React.Component {
                   <Login 
                   handleLogin={this.props.handleLogin}
                   loginModalOpen = {this.state.loginModalOpen}
+                  error = {this.props.error}
                   closeModal = {() => this.setState({loginModalOpen: !this.state.loginModalOpen})} /> Login
           
               </Menu.Item> 
