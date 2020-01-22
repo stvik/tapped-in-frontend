@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Fragment } from 'react'
 import {Button, Menu} from 'semantic-ui-react'
 import  Login from './Login'
 import Signup from './Signup'
@@ -56,26 +56,30 @@ class Navbar extends React.Component {
 
           <Menu.Menu position='right'>
             
-             
-            <Menu.Item name='Sign Up' onClick={this.openSignupModal} >
+            {this.props.loggedInUser ? <Menu.Item as={Link} to='/profile' name='Profile' ><img src='https://react.semantic-ui.com/logo.png' /></Menu.Item>
+              :
+              <Fragment>
+              <Menu.Item name='Sign Up' onClick={this.openSignupModal} >
+                
+                  <Signup
+                    createUser={this.props.createUser} 
+                    signupModalOpen = {this.state.signupModalOpen}
+                    closeModal = {() => this.setState({signupModalOpen: !this.state.signupModalOpen})} 
+                  /> Sign Up
               
-                <Signup
-                  createUser={this.props.createUser} 
-                  signupModalOpen = {this.state.signupModalOpen}
-                  closeModal = {() => this.setState({signupModalOpen: !this.state.signupModalOpen})} 
-                /> Sign Up
-            
-            </Menu.Item>
-            
-            <Menu.Item name='Login' onClick={this.openLoginModal}>
-                <Login 
-                handleLogin={this.props.handleLogin}
-                loginModalOpen = {this.state.loginModalOpen}
-                closeModal = {() => this.setState({loginModalOpen: !this.state.loginModalOpen})} /> Login
-        
-            </Menu.Item> 
+              </Menu.Item>
+              
+              <Menu.Item name='Login' onClick={this.openLoginModal}>
+                  <Login 
+                  handleLogin={this.props.handleLogin}
+                  loginModalOpen = {this.state.loginModalOpen}
+                  closeModal = {() => this.setState({loginModalOpen: !this.state.loginModalOpen})} /> Login
           
-            <Menu.Item as={Link} to='/profile' name='Profile' ><img src='https://react.semantic-ui.com/logo.png' /></Menu.Item>
+              </Menu.Item> 
+              </Fragment>  
+          } 
+          
+            
 
           </Menu.Menu> 
 
