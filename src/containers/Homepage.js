@@ -10,7 +10,7 @@ export default class Homepage extends Component {
             <Grid verticalAlign='middle' centered style ={{ height: '100vh'}}>
                 <Grid.Row   style={{height: '100%'}}>
                     <Grid.Column width={6}>
-                        <SearchBar searchText={this.props.searchText} updateSearchText={this.props.updateSearchText} searchBrew={this.props.searchBrew}/>
+                        <SearchBar searchText={this.props.searchText} updateSearchText={this.props.updateSearchText} searchBrew={this.props.searchBrew} updateSearchType={this.props.updateSearchType}/>
                     </Grid.Column>
                 </Grid.Row>
             </Grid>

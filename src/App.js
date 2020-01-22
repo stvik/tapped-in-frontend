@@ -22,7 +22,8 @@ class App extends React.Component {
       page: 1,
       selectedState: 'virginia',
       users: [],
-      loggedInUser: null
+      loggedInUser: null,
+      searchType: 'name',
 
     }
   }
@@ -35,26 +36,35 @@ class App extends React.Component {
         allBreweries: data
       })
       )  
-  }
 
-  componentDidMount(){
     fetch('http://localhost:3000/users')
     .then(response => response.json())
     .then(users => this.setState({users: users}))
   }
 
+
+
   updateSearchText = (e) => {
+
     this.setState({
-      searchText: e.currentTarget.value
+      searchText: e.currentTarget.value.toLowerCase()
     })
 
   }
 
+  updateSearchType = (e) => {
+
+    this.setState({
+      searchType: e.currentTarget.firstElementChild.innerText.toLowerCase()
+    })
+  }
+
   searchBrew = () => {
-    const lowerSearchT = this.state.searchText.toLowerCase()
-    fetch(`http://localhost:3000/breweries?name=${lowerSearchT}&page=1`)
+  
+    fetch(`http://localhost:3000/breweries?${this.state.searchType}=${this.state.searchText}&page=1`)
     .then(resp => resp.json())
     .then(data =>  {
+      console.log(data)
       this.setState({
         allBreweries: data,
         page: 1
@@ -192,6 +202,8 @@ class App extends React.Component {
   }
 
 
+
+
   render() {
     // console.log(this.state.allBreweries)
   
@@ -200,7 +212,7 @@ class App extends React.Component {
     <Router>
       <div >
         <Navbar createUser={this.createUser} handleLogin={this.handleLogin} loggedInUser = {this.state.loggedInUser}/>
-        <Route exact path='/' render={() => <Homepage searchText={this.state.searchText} updateSearchText={this.updateSearchText} searchBrew={this.searchBrew}/>} />
+        <Route exact path='/' render={() => <Homepage searchText={this.state.searchText} updateSearchText={this.updateSearchText} searchBrew={this.searchBrew} updateSearchType={this.updateSearchType}/>} />
         <Route exact path='/breweries' render={() => <BrowseBreweryPage 
                                                       breweries={this.state.allBreweries}
                                                        pickState={this.pickState} 

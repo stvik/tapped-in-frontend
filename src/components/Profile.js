@@ -32,7 +32,7 @@ class Profile extends Component {
 
 
     render(){
-        console.log(this.state.favoriteBrews)
+       
         const {firstname, lastname, image, bio} = this.props.user
         return(
             <Grid >
