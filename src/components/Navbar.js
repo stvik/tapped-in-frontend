@@ -39,6 +39,7 @@ class Navbar extends React.Component {
 
           <Menu.Menu position='right'>
     
+            
 
             <Menu.Item name='Sign Up' onClick={this.openSignupModal} >
               

@@ -19,7 +19,7 @@ class Signup extends Component{
                         <Form.Input  name='firstname' label='First name' placeholder='First name'/>
                         <Form.Input  name='lastname' label='Last name' placeholder='Last name'/>
                         <Form.Input  name='username' label='Username' placeholder='Username'/>
-                        <Form.Input  name='password'label='Password' placeholder='Password'/>
+                        <Form.Input  name='password'label='Password' placeholder='Password' type='password' />
                         <h4>Tell us about yourself</h4>
                         <Form.Input  name='bio' placeholder='Bio'/>
                         

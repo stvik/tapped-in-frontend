@@ -4,6 +4,7 @@ import Homepage from './containers/Homepage'
 import BrowseBreweryPage from './containers/BrowseBreweryPage'
 import SimpleMap from './components/SimpleMap';
 import CommunityPage from './containers/CommunityPage'
+import Profile from './components/Profile'
 import { BrowserRouter as Router, Route, Redirect}  from 'react-router-dom'
 
 
@@ -19,7 +20,8 @@ class App extends React.Component {
       searchText: '',
       page: 1,
       selectedState: 'virginia',
-      users: []
+      users: [],
+      loggedInUser: null
 
     }
   }
@@ -136,7 +138,9 @@ class App extends React.Component {
   }
 
   handleLogin = (e) => {
-    console.log(e.currentTarget)
+      fetch(`http://localhost:3000/users/login?username=${e.currentTarget.username.value}&password=${e.currentTarget.password.value}`)
+      .then(resp => resp.json())
+      .then(data => this.setState({loggedInUser: data}))
   }
 
 
@@ -146,7 +150,7 @@ class App extends React.Component {
    return( 
     <Router>
       <div>
-        <Navbar createUser={this.createUser} handleLogin={this.handleLogin}/>
+        <Navbar createUser={this.createUser} handleLogin={this.handleLogin} loggedInUser = {this.state.loggedInUser}/>
         <Route exact path='/' render={() => <Homepage searchText={this.state.searchText} updateSearchText={this.updateSearchText} searchBrew={this.searchBrew}/>} />
         <Route exact path='/breweries' render={() => <BrowseBreweryPage 
                                                       breweries={this.state.allBreweries}
@@ -156,7 +160,7 @@ class App extends React.Component {
                                                        page={this.state.page} />} 
         />
         <Route exact path='/community' render={() => <CommunityPage users = {this.state.users} />}/>
-
+        <Route exact path = '/profile' render={() => <Profile user = {this.state.loggedInUser} />} />
 
       </div>
     </Router>
