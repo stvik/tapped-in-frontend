@@ -14,7 +14,11 @@ const BreweryCard = (props) => {
           <span className='cinema'>{street}, {city}, {state} {postal_code}</span>
         </Item.Meta>
         <Item.Extra>
-          <Button circular size='mini' basic  color='blue' floated='center'>
+          <Button 
+            circular size='mini' 
+            basic  color='blue' 
+            floated='center'
+          >
               Details
               <Icon name='right chevron' />
             </Button>
