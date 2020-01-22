@@ -6,7 +6,7 @@ import background from '../images/background.jpeg'
 export default class Homepage extends Component {
     render(){
         return (
-            <Grid verticalAlign='top' centered style ={{ height: '100vh', backgroundSize: 'cover', backgroundImage:"url(" + background + ")"}}>
+            <Grid verticalAlign='top' centered style ={{ height: '100vh' , backgroundSize: 'cover', backgroundImage:"url(" + background + ")"}}>
                 <Grid.Row   style={{height: '100%'}}>
                     <Grid.Column width={6}>
                         <br />
@@ -23,4 +23,4 @@ export default class Homepage extends Component {
     }
 }
 
-// style ={{ height: '100vh', backgroundSize: 'cover', backgroundImage:"url(" + hop + ")" }}
+// style ={{ height: '100vh', backgroundSize: 'cover', backgroundImage:"url(" + background + ")" }}
