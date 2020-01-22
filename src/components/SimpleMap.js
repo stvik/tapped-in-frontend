@@ -52,7 +52,6 @@ class SimpleMap extends Component {
 
   render(){
 
-    console.log(this.props)
 
     const {center, zoom}  = this.state
 

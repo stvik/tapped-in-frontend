@@ -25,9 +25,11 @@ export default class BrowseBreweryPage extends React.Component {
 				<Grid>
 					<Grid.Column width={6}>
 						<StateDropdown handleSelect={this.props.pickState}/>
+
 						<Button circular onClick={this.props.getPreviousBrews}>Previous Page</Button>
 						<Button circular onClick={this.props.getMoreBrews}>Next Page</Button>
-						<BreweriesListContainer selectedBrewery = {this.selectedBrewery} breweries={this.props.breweries} getMoreBrews={this.props.getMoreBrews} page={this.props.page}/>
+						<BreweriesListContainer selectedBrewery = {this.selectedBrewery} breweries={this.props.breweries} getMoreBrews={this.props.getMoreBrews} page={this.props.page} loggedInUser={this.props.loggedInUser} addToFavorites={this.props.addToFavorites}/>
+
 					</Grid.Column>
 					<Grid.Column width={10}>
 					<SimpleMap  selectedBrewery = {this.state.selectedBrewery} breweries={this.props.breweries} />

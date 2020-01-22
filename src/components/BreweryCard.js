@@ -1,5 +1,5 @@
 import React from 'react'
-import {Item, Label, Button, Icon} from 'semantic-ui-react'
+import {Item, Button, Icon} from 'semantic-ui-react'
 
 const BreweryCard = (props) => {
 
@@ -13,26 +13,25 @@ const BreweryCard = (props) => {
         <Item.Meta>
           <span className='cinema'>{street}, {city}, {state} {postal_code}</span>
         </Item.Meta>
-        <Item.Extra>
-          <Button 
-            circular size='mini' 
-            basic  color='blue' 
-            floated='center'
-          >
+        <Item.Extra>  
+          {props.loggedInUser ? <Button circular basic color='red' floated='center' size='mini' onClick={() => props.addToFavorites(props.brewery)}>  
+             Favorite
+             <Icon name='right favorite' />  
+          </Button> : null}
+          <Button onClick={() => props.handleClick(props.brewery)} circular size='mini' basic  color='blue' floated='center'>
               Details
               <Icon name='right chevron' />
             </Button>
-          <Button circular size='mini' basic color='red' floated='center'>
-              Favorite
-              <Icon name='right favorite' />
-          </Button>
-        </Item.Extra>
-        <Item.Extra>
         </Item.Extra>
       </Item.Content>
+
     </Item>
 
 		)
 }
 
 export default BreweryCard
+          // <Button circular size='mini' basic color='red' floated='center'>
+          //     Favorite
+          //     <Icon name='right favorite' />
+          // </Button>

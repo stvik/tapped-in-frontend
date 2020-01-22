@@ -1,6 +1,6 @@
 import React from 'react'
 import _ from 'lodash'
-import { Header, Image, Modal } from 'semantic-ui-react'
+import { Header, Image, Modal, Button } from 'semantic-ui-react'
 
 class BreweryModal extends React.Component {
     
@@ -26,7 +26,11 @@ class BreweryModal extends React.Component {
                     <p>{street}</p>
                     <p>{city}, {state}, {postal_code} </p>
                     <p>{description}</p>
-                    <a href={website_url} target='_blank'> Visit Website </a>
+                    
+                    <Button circular basic color='blue'>
+						<a href={website_url} target='_blank'> Visit Website </a>
+					</Button>
+                    
                 </Modal.Description>
                 </Modal.Content>
             </Modal>
