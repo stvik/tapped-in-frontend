@@ -15,12 +15,13 @@ class Profile extends Component {
     }
 
     componentDidMount() {
-        fetch(`http://localhost:3000/user_brews?user_id=${this.props.user}`)
+        fetch(`http://localhost:3000/user_brews?user_id=${this.props.user.id}`)
         .then(resp => resp.json())
         .then(data => {
+            if (data.length) {
             const breweries = data.map(fav => fav.brewery)
             this.setState({favoriteBrews: breweries})
-
+        }
         })
 
     }

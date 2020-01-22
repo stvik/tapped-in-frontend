@@ -14,13 +14,13 @@ const BreweryCard = (props) => {
           <span className='cinema'>{street}, {city}, {state} {postal_code}</span>
         </Item.Meta>
         <Item.Extra>  
-          {props.loggedInUser ? <Button circular basic color='red' floated='center' size='mini' onClick={() => props.addToFavorites(props.brewery)}>  
+          {props.loggedInUser ? <Button circular basic color='red'  size='mini' onClick={() => props.addToFavorites(props.brewery)}>  
              Favorite
-             <Icon name='right favorite' />  
+             <Icon name='favorite right' />  
           </Button> : null}
-          <Button onClick={() => props.handleClick(props.brewery)} circular size='mini' basic  color='blue' floated='center'>
+          <Button onClick={() => props.handleClick(props.brewery)} circular size='mini' basic  color='blue'>
               Details
-              <Icon name='right chevron' />
+              <Icon name='chevron right' />
             </Button>
         </Item.Extra>
       </Item.Content>

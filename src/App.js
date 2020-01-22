@@ -59,7 +59,8 @@ class App extends React.Component {
     })
   }
 
-  searchBrew = () => {
+  searchBrew = (e) => {
+    
   
     fetch(`http://localhost:3000/breweries?${this.state.searchType}=${this.state.searchText}&page=1`)
     .then(resp => resp.json())
@@ -67,11 +68,14 @@ class App extends React.Component {
       console.log(data)
       this.setState({
         allBreweries: data,
-        page: 1
+        page: 1,
+        searchText: ''
       })
 
     }
       ) 
+
+
   }
 
   pickState = (e) => {
@@ -177,8 +181,6 @@ class App extends React.Component {
 
   createFav = (brewery) => {
 
-
-
     const data = {
       user_id: this.state.loggedInUser.id,
       brewery_id: brewery.id,
@@ -224,6 +226,7 @@ class App extends React.Component {
         />
         <Route exact path='/community' render={() => <CommunityPage users = {this.state.users} />}/>
         <Route exact path = '/profile' render={() => <Profile user = {this.state.loggedInUser} />} />
+      
 
       </div>
     </Router>

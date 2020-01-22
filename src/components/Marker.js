@@ -5,7 +5,7 @@ import '../Marker.css'
 
 const Marker = (props) => {
     const {name, brewery, setActiveMarker} = props
-    console.log(props)
+ 
     return (
         <div>
             <div    

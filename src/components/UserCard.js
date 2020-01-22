@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 import {Card} from 'semantic-ui-react'
+import Profile from './Profile'
+import {Redirect} from 'react-router-dom'
 
 export default class UserCard extends Component {
     render(){
