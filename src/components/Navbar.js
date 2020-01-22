@@ -28,6 +28,7 @@ class Navbar extends React.Component {
   }
 
   render() {
+    console.log(this.props.loggedInUser)
     return (
       <Menu size='large' secondary>
           <Menu.Item as={Link} to='/'
@@ -54,7 +55,7 @@ class Navbar extends React.Component {
           />
 
           <Menu.Menu position='right'>
-    
+            
              
             <Menu.Item name='Sign Up' onClick={this.openSignupModal} >
               

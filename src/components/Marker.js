@@ -10,7 +10,7 @@ const Marker = (props) => {
         <div>
             <div    
                 className = 'pin bounce'
-                style={{backgroundColor: color, cursor: 'pointer'}}
+                style={{backgroundColor: 'red', cursor: 'pointer'}}
                 title={name}
                 onClick = {() => setActiveMarker(brewery)}
             />

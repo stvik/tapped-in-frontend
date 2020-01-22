@@ -5,6 +5,18 @@ import SimpleMap from '../components/SimpleMap'
 import {Button, Grid} from 'semantic-ui-react'
 
 export default class BrowseBreweryPage extends React.Component {
+	
+	constructor(){
+		super()
+		this.state = {
+			color: 'red'
+		}
+	}
+
+	changePinColor = () => {
+		
+	}
+
 	render() {
 		// console.log(this.props)
 		
