@@ -1,6 +1,6 @@
 import React from 'react'
 import BreweryCard from '../components/BreweryCard'
-import {Item, Segment, Modal, Image, Header, Button} from 'semantic-ui-react'
+import {Item, Segment, Modal, Image, Header, Button, Popup} from 'semantic-ui-react'
 
 
 export default class BreweriesListContainer extends React.Component {
@@ -37,9 +37,11 @@ export default class BreweriesListContainer extends React.Component {
 					<p>{street}</p>
 					<p>{city}, {state}, {postal_code} </p>
 					<p>{description}</p>
-					<Button circular basic color='blue'>
-						<a href={website_url} target='_blank'> Visit Website </a>
-					</Button>
+					{website_url ? 
+                    	<Button circular basic color='blue'><a href={website_url} target='_blank'> Visit Website </a></Button>
+                		:
+                    	<Popup content='This brewery does not have a website yet!' on='click' pinned trigger = {<Button content='Visit Website' circular basic color='blue'/>} />
+                	}
 				</Modal.Description>
 				</Modal.Content>
 			</Modal>

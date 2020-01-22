@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import {Modal, Button, Form, Header, Icon} from 'semantic-ui-react'
+import {Modal, Button, Form, Header, Image, Icon} from 'semantic-ui-react'
 
 class Login extends Component {
     render(){
@@ -9,8 +9,8 @@ class Login extends Component {
                 open = {this.props.loginModalOpen}
                 onClose = {this.props.closeModal}
             >
+                <Image centered size = 'medium' src="http://static.showit.co/800/KtnOrZ53RuOmaWr0IInTEg/73125/just_hop.png" circular />
                 <Header as='h2' icon textAlign='center'>
-                    <Icon name='user' circular />
                     <Header.Content>Login</Header.Content>
                 </Header>
 
@@ -24,16 +24,11 @@ class Login extends Component {
                         <Button circular
                             color='green' inverted 
                             type='submit'
+                            onClick={this.props.closeModal}
                         > 
                             <Icon name = 'checkmark' /> Login
                         </Button>
                         
-                        
-                        <Button circular
-                            color='red' inverted 
-                        >
-                            <Icon name='remove'/> Cancel 
-                        </Button>
                     </Form>
                 </Modal.Content>
         </Modal>
