@@ -4,6 +4,7 @@ import Homepage from './containers/Homepage'
 import BrowseBreweryPage from './containers/BrowseBreweryPage'
 import CommunityPage from './containers/CommunityPage'
 import Profile from './components/Profile'
+import background from './images/background.jpeg'
 import { BrowserRouter as Router, Route, Redirect}  from 'react-router-dom'
 
 
