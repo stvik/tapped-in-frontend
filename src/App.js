@@ -23,6 +23,7 @@ class App extends React.Component {
       users: [],
       loggedInUser: null,
       searchType: 'name',
+      errorLogin: false
 
     }
   }
@@ -152,9 +153,14 @@ class App extends React.Component {
   }
 
   handleLogin = (e) => {
+    this.setState({errorLogin: false})
+
+
     fetch(`http://localhost:3000/users/login?username=${e.currentTarget.username.value}&password=${e.currentTarget.password.value}`)
     .then(resp => resp.json())
     .then(data => this.setState({loggedInUser: data}))
+    .catch(error => this.setState({errorLogin: true}))
+    e.currentTarget.reset()
   }
 
   handleLogout = () => {
@@ -215,8 +221,8 @@ class App extends React.Component {
   
    return( 
     <Router>
-      <div>
-        <Navbar createUser={this.createUser} handleLogin={this.handleLogin} handleLogout={this.handleLogout} loggedInUser = {this.state.loggedInUser}/>
+      <div >
+        <Navbar createUser={this.createUser} handleLogin={this.handleLogin} handleLogout={this.handleLogout} loggedInUser = {this.state.loggedInUser} error={this.state.errorLogin}/>
         <Route exact path='/' render={() => <Homepage searchText={this.state.searchText} updateSearchText={this.updateSearchText} searchBrew={this.searchBrew} updateSearchType={this.updateSearchType}/>} />
         <Route exact path='/breweries' render={() => <BrowseBreweryPage 
                                                       breweries={this.state.allBreweries}
