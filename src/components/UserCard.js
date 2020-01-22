@@ -11,7 +11,7 @@ export default class UserCard extends Component {
                 image={image}
                 header= {`${firstname} ${lastname}`}
                 meta='Member'
-                description={bio}
+             
             />
         )
     }
