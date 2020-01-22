@@ -44,7 +44,6 @@ class App extends React.Component {
   }
 
   updateSearchText = (e) => {
-    console.log(e.currentTarget.value)
     this.setState({
       searchText: e.currentTarget.value
     })
@@ -145,6 +144,53 @@ class App extends React.Component {
     .then(data => this.setState({loggedInUser: data}))
   }
 
+  addToFavorites = (brewery)  => {
+
+
+     const configObj = {
+      method: "POST",
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept' : 'application/json'
+      },
+      body: JSON.stringify(brewery)
+      
+    }
+
+    fetch('http://localhost:3000/breweries', configObj)
+    .then(resp => resp.json())
+    .then(data => this.createFav(data))
+  
+
+    
+  }
+
+  createFav = (brewery) => {
+
+
+
+    const data = {
+      user_id: this.state.loggedInUser.id,
+      brewery_id: brewery.id,
+      favorited: true
+    }
+
+     const configObj = {
+      method: "POST",
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept' : 'application/json'
+      },
+      body: JSON.stringify(data)
+      
+    }
+
+    fetch('http://localhost:3000/user_brews', configObj)
+    .then(resp => resp.json())
+    .then(data => console.log(data))
+  
+  }
+
 
   render() {
     // console.log(this.state.allBreweries)
@@ -160,7 +206,9 @@ class App extends React.Component {
                                                        pickState={this.pickState} 
                                                        getPreviousBrews={this.getPreviousBrews} 
                                                        getMoreBrews={this.getMoreBrews} 
-                                                       page={this.state.page} />} 
+                                                       page={this.state.page}
+                                                       loggedInUser={this.state.loggedInUser}
+                                                       addToFavorites={this.addToFavorites} />} 
         />
         <Route exact path='/community' render={() => <CommunityPage users = {this.state.users} />}/>
         <Route exact path = '/profile' render={() => <Profile user = {this.state.loggedInUser} />} />

@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 
 const SearchBar = (props) =>{
    
-    	console.log(props)
+    	
         return (
 			
 			
